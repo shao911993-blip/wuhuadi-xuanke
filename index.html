@@ -70,12 +70,13 @@ select{padding:5px 8px;font-size:13.5px}
 .compare-chips{display:flex;flex-wrap:wrap;gap:6px;max-height:110px;overflow:auto}
 .compare-chips .btn{font-size:12px;padding:3px 8px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 body.has-compare{padding-bottom:180px}
-.compare-table{table-layout:fixed;width:calc(108px + var(--compare-count,4)*220px);min-width:100%}
+.compare-table{table-layout:fixed;border-collapse:separate;border-spacing:0;width:calc(108px + var(--compare-count,4)*220px);min-width:100%}
 .compare-table th,.compare-table td{width:220px;overflow-wrap:anywhere}
-.compare-table th:first-child{position:sticky;left:0;z-index:1;width:108px;background:var(--surface);color:var(--muted)}
+.compare-table th:first-child{position:sticky;left:0;z-index:1;width:108px;background:var(--surface);background-clip:border-box;box-shadow:-1px 0 0 var(--surface),1px 0 0 var(--line);color:var(--muted)}
 .compare-table thead th{font-size:15px;color:var(--fg);vertical-align:top}
 .compare-table thead th:first-child{z-index:2}
-.compare-box{padding:0;isolation:isolate;overscroll-behavior-x:contain}
+/* 固定欄必須貼齊捲動容器；提高明確性，避免後面的通用 .card 加回內距。 */
+.card.compare-box{position:relative;padding:0;isolation:isolate;overscroll-behavior-x:contain}
 .compare-table th a{font-weight:600}
 .compare-table td b{font-family:var(--f-mono);font-size:14px}
 .compare-table details summary{cursor:pointer;color:var(--ink)}
